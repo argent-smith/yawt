@@ -1,6 +1,6 @@
 # Author:: Pavel Argentov <argentoff@gmail.com>
 #
-# Main YAWT header
+# Basic YAWT module constants, requires and utility
 #
 
 ######## Utility

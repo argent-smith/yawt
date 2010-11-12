@@ -1,6 +1,7 @@
 # Author:: Pavel Argentov <argentoff@gmail.com>
 #
-# This file contains YAWT::Response class definition 
+# YAWT::Response class definition.
+#
 module YAWT
   # Response from WHOIS server.
   class Response

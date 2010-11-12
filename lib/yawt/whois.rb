@@ -1,8 +1,11 @@
 # Author:: Pavel Argentov <argent-smith@gmail.com>
-# YAWT::Whois class
-
+#
+# YAWT::Whois class definition.
+#
 module YAWT
+
   # Whois request initiation and processing wrapper.
+  #
   class Whois
     # WHOIS server to use.
     attr_accessor :server
@@ -13,7 +16,7 @@ module YAWT
     # Field to store raw server's Response.
     attr_reader :response
 
-    # Creates new Whois. Can yield a block with newlt created Whois applied.
+    # Creates new Whois. Can yield a block with newly created Whois applied.
     #
     # Examples:
     #   new(
