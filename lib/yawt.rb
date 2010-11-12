@@ -1,67 +1,52 @@
+# Author:: Pavel Argentov <argentoff@gmail.com>
+#
+# Main YAWT header
+#
+
+######## Utility
+
+$:.unshift File.dirname(__FILE__) # For use/testing when no gem is installed
+
+# Require all of the Ruby files in the given directory.
+#
+# path - The String relative path from here to the directory.
+#
+# Returns nothing.
+def require_all(path)
+  glob = File.join(File.dirname(__FILE__), path, '*.rb')
+  Dir[glob].each do |f|
+    require f
+  end
+end
+
+##### Requires:
+
+# stdlib
 require 'socket'
 
-# = YAWT: Yet Another Whois Tool
+# internals
+require 'yawt/response'
+require 'yawt/whois'
+
+# = Yet Another Whois Tool
 # This is the library which I've started to implement some things useful to me
 # which I couldn't find in neither Simone Carletti's really nice 'whois' nor any
 # other whois gems already available on Gemcutter.
 module YAWT
 
-  # Whois request initiation and processing wrapper.
-  class Whois
-    # WHOIS server to use.
-    attr_accessor :server
-    # String of request
-    attr_accessor :request
-    # Field to store raw server's Response.
-    attr_reader :response
+  ####### Constants
 
-    # Creates new Whois. Can yield a block with newlt created Whois applied.
-    #
-    # Examples:
-    #   new(
-    #       :server  => 'my.favorite.whois.net'
-    #       :request => 'foo.bar.com'
-    #   )
-    # or
-    #   new |w|
-    #     # do what appropriate with 'w' Whois object
-    #   end
-    #
-    # Arguments are optional.
-    #
-    # Argument defaults:
-    # [:server] 'whois.ripe.net'
-    # [:request] 'help'
-    #
-    def initialize(args = {})
-      args = {
-        :server  => 'whois.ripe.net',
-        :request => 'help'
-      }.merge!(args)
+  # YAWT version code: 0.0.0
+  VERSION = "0.0.0"
 
-      @server  = args[:server]
-      @request = args[:request]
-
-      yield self if block_given?
-    end
-
-    # Sends the request to server;
-    # Returns Response;
-    # Sets the @response attribute of self.
-    #
-    def query(request = @request)
-      # TODO: implement the following:
-      # - connect to the server
-      # - read the response
-      # - create the Response
-      #   - set @response
-      #   - return Response
-      #
-    end
-  end
-
-  # Response from WHOIS server.
-  class Response
-    attr_reader :raw
-  end
+  # YAWT library defaults: Hash containing:
+  #   :server =>  'whois.ripe.net', # default WHOIS server
+  #   :port   =>   43,              # default WHOIS TCP port
+  #   :request => 'help'            # default WHOIS request
+  #
+  DEFAULTS = {
+    :server =>  'whois.ripe.net', # default WHOIS server
+    :port   =>   43,              # default WHOIS TCP port
+    :request => 'help'            # default WHOIS request
+  }
 end
