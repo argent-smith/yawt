@@ -50,3 +50,9 @@ module YAWT
     :request => 'help'            # default WHOIS request
   }
 end
+
+# TODO:
+# - alias Whois#query -> Whois#ask
+# - code YAWT::#whois on top of above
+# - code bin/whoisya as CLI util
+#
