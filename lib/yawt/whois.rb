@@ -54,7 +54,7 @@ module YAWT
     # Returns Response;
     # Sets the @response attribute of self.
     #
-    def query(request = @request)
+    def query!(request = @request)
       @request = request
       buf = ""
       s = TCPSocket.new(@server, @port)
@@ -65,5 +65,7 @@ module YAWT
       s.close
       @response = Response.new(buf)
     end
+    
+    alias :ask! :query!
   end
 end

@@ -27,6 +27,7 @@ require 'socket'
 # internals
 require 'yawt/response'
 require 'yawt/whois'
+require 'yawt/utils'
 
 # = Yet Another Whois Tool
 # This is the library which I've started to implement some things useful to me
@@ -50,9 +51,3 @@ module YAWT
     :request => 'help'            # default WHOIS request
   }
 end
-
-# TODO:
-# - alias Whois#query -> Whois#ask
-# - code YAWT::#whois on top of above
-# - code bin/whoisya as CLI util
-#
