@@ -4,7 +4,7 @@
 #
 module YAWT
   
-  class <<self
+  class << self
     # Simplest Whois wrapper.
     # Creates Whois and calls its \#ask! method (see Whois#ask!).
     # 
