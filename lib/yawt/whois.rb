@@ -1,4 +1,4 @@
-# Author:: Pavel Argentov <argent-smith@gmail.com>
+  # Author:: Pavel Argentov <argent-smith@gmail.com>
 #
 # YAWT::Whois class definition.
 #
@@ -8,12 +8,12 @@ module YAWT
   #
   class Whois
     # WHOIS server to use.
-    attr_accessor :server
+    attr_reader :server
     # TCP port number on WHOIS server.
-    attr_accessor :port
+    attr_reader :port
     # String of request
-    attr_accessor :request
-    # Field to store raw server's Response.
+    attr_reader :request
+    # Server's Response.
     attr_reader :response
 
     # Creates new Whois. Can yield a block with newly created Whois applied.
@@ -34,20 +34,21 @@ module YAWT
     # [:server] 'whois.ripe.net'
     # [:request] 'help'
     #
-    def initialize(args = {})
+    def initialize(req = DEFAULTS[:request], args = {})
       args = {
         :server  => DEFAULTS[:server],
         :port    => DEFAULTS[:port],
-        :request => DEFAULTS[:request]
+        :request => req
       }.merge!(args)
 
       @server  = args[:server]
       @request = args[:request]
       @port    = args[:port]
 
-      yield self if block_given?
+      query!
     end
 
+    private
     # RFC 3912 implementation:
     #
     # Sends the request to server;

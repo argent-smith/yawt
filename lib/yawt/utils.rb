@@ -19,7 +19,7 @@ module YAWT
       args = {}
       args[:server]  = server  unless server.nil?
       args[:request] = request unless request.nil?
-      Whois.new(args).ask!.raw
+      Whois.new(args).response.raw
     end
   end
 end
