@@ -10,5 +10,3 @@ precious everything. So if you pull, be aware!
 == Copyright
 
 Copyright (c) 2010 Pavel Argentov. See LICENSE for details.
-
-
