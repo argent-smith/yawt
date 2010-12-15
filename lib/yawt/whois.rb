@@ -34,12 +34,22 @@ module YAWT
     # [:server] 'whois.ripe.net'
     # [:request] 'help'
     #
-    def initialize(req = DEFAULTS[:request], args = {})
-      args = {
-        :server  => DEFAULTS[:server],
-        :port    => DEFAULTS[:port],
-        :request => req
-      }.merge!(args)
+    def initialize(args = {})
+      if args.is_a? Hash
+        args = {
+          :server  => DEFAULTS[:server],
+          :port    => DEFAULTS[:port],
+          :request => DEFAULTS[:request]
+        }.merge!(args)
+      elsif args.is_a? String
+        args = {
+          :server  => DEFAULTS[:server],
+          :port    => DEFAULTS[:port],
+          :request => args
+        }
+      else 
+        raise ArgumentError, "args is #{args.class} but String or Hash required"
+      end
 
       @server  = args[:server]
       @request = args[:request]
