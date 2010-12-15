@@ -4,8 +4,11 @@ Yet Another Whois Tool (or Thing?)
 
 TODO: write a nearby complete description here
 
+NB: The unreleased versions are by definition poor, bad and can break your
+precious everything. So if you pull, be aware!
+
 == Copyright
 
 Copyright (c) 2010 Pavel Argentov. See LICENSE for details.
 
-123
+
